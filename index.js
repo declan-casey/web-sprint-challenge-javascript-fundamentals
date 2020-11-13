@@ -65,13 +65,13 @@ console.log(animalNames(zooAnimals));
   The zoos need a list of all their animal's names (animal_name only) converted to lower case. Using map, create a new array of strings named lowCaseAnimalNames, each string following this pattern: "jackal, asiatic". Log the resut.
   */
   function lowerCaseNames(data){
-    let lowCaseAnimalNames = [];
     let lowerCaser = data.map(function(item){
-      console.log(item);
-      lowCaseAnimalNames.push(`${item.toLowerCase(item.animal_name)}`)
+      return item.animal_name.toLowerCase();
     })
-    return lowCaseAnimalNames
+    return lowerCaser
   }
+
+  // lowCaseAnimalNames.push(`${item.animal_name.toLowerCase()}`
   
   
   /* 🦁🦁🦁 Request 3: .filter() 🦁🦁🦁
@@ -148,8 +148,10 @@ console.log(animalNames(zooAnimals));
 /* 🐴🐴🐴 Step 1: Base Constructor 🐴🐴🐴
   Create a constructor function named CuboidMaker that accepts properties for length, width, and height which can be initialized as an object
 */
-function CuboidMaker(/*Your Code Here */){
-  /*Your Code Here */
+function CuboidMaker(attr){
+    this.length = attr.length;
+    this.width = attr.width;
+    this.height = attr.height;
 }
 
 
@@ -157,7 +159,10 @@ function CuboidMaker(/*Your Code Here */){
   Create a method using CuboidMaker's prototype that returns the volume of a given cuboid's length, width, and height
   Formula for cuboid volume: length * width * height   */
 
-
+CuboidMaker.prototype.volume = function(){
+ let vol = this.length*this.width*this.height;
+ return vol
+}
 
 
 
@@ -166,7 +171,10 @@ function CuboidMaker(/*Your Code Here */){
   Formula for cuboid surface area of a cube: 
   2 * (length * width + length * height + width * height)  */
 
-
+  CuboidMaker.prototype.surfaceArea = function(){
+    let surf = 2 * (this.length*this.width + this.length*this.height + this.width*this.height);
+    return surf
+  }
 
 
 
@@ -187,7 +195,18 @@ function CuboidMaker(/*Your Code Here */){
 // 🦄🦄🦄 Topic 4: Classes 🦄🦄🦄 //
 //🦄🦄🦄 1. Take your prototypes from above and refactor into class syntax. Please rename your class CuboidMakerTwo and your object cuboidTwo 🦄🦄🦄
 class CuboidMakerTwo{
+    constructor(attr){
+      this.height = attr.height;
+      this.width = attr.width;
+      this.length = attr.length;
+    }
+    surfaceArea(){
+      return 2 * (this.length*this.width + this.length*this.height + this.width*this.height);
+    }
 
+    volume(){
+      return this.length*this.width*this.height;
+    }
 }
 
 
